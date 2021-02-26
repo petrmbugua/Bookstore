@@ -5,25 +5,47 @@
 
 {% block content %}
 
-<h1>Homepage</h1>
 
-<form class="form-inline mt-2 mt-md-0" action="{% url 'search_results' %}" method="get">
-    <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-</form>
 
-<img class="bookcover" src="{% static 'images/dfp_cover_31.png' %}">
+<div class="jumbotron">
+    <h1 class="display-4 text-center">Homepage</h1>
 
-{% if user.is_authenticated %}
+    {% if user.is_authenticated %}
 
-<p>Hi {{ user.email }}!</p>
-<p><a href="{% url 'account_logout' %}">Log Out</a></p>
+    <p class="lead">Hi {{ user.email }}!</p>
 
-{% else %}
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link " href="{% url 'account_logout' %}">Logout</a>
+        </li>
+    </ul>
 
-<p>You are not logged in</p>
-<p><a href="{% url 'account_login' %}">Log In</a> |
-    <a href="{% url 'account_signup' %}">Sign Up</a>
-</p>
-{% endif %}
+
+    {% else %}
+
+    <p class="lead">You are not logged in</p>
+    <p><a href="{% url 'account_login' %}">Log In</a> |
+        <a href="{% url 'account_signup' %}">Sign Up</a>
+    </p>
+
+
+    {% endif %}
+
+    <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis earum aperiam delectus nobis
+        quibusdam magni incidunt dolore aliquid quos, atque molestias. Recusandae odio repudiandae voluptatem et, animi
+        hic expedita incidunt?</p>
+    <hr class="my-4">
+    <form class="form-inline mt-2 mt-md-0" action="{% url 'search_results' %}" method="get">
+        <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+    </form>
+
+
+</div>
+
+
+
+<!-- <img class="bookcover" src="{% static 'images/dfp_cover_31.png' %}"> -->
+
+
 
 {% endblock content %}
